@@ -18,6 +18,11 @@ public class PnlDatosEstudiante extends JPanel {
 
 	PnlDatosPersonales pnlDatos = new PnlDatosPersonales();
 	Estudiante actual = new Estudiante();
+	JButton btnPrimero;
+	JButton btnAnterior;
+	JButton btnSiguiente;
+	JButton btnUltimo;
+	
 	
 	/**
 	 * Create the panel.
@@ -29,7 +34,7 @@ public class PnlDatosEstudiante extends JPanel {
 		add(toolBar, BorderLayout.NORTH);
 		add(pnlDatos, BorderLayout.CENTER);
 		
-		JButton btnPrimero = new JButton("");
+		btnPrimero = new JButton("");
 		btnPrimero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actual = EstudianteControlador.getInstancia().findFirst();
@@ -39,7 +44,7 @@ public class PnlDatosEstudiante extends JPanel {
 		btnPrimero.setIcon(new ImageIcon(PnlDatosEstudiante.class.getResource("/gui/res/gotostart.png")));
 		toolBar.add(btnPrimero);
 		
-		JButton btnAnterior = new JButton("");
+		btnAnterior = new JButton("");
 		btnAnterior.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actual = EstudianteControlador.getInstancia().findPrevious(actual);
@@ -49,7 +54,7 @@ public class PnlDatosEstudiante extends JPanel {
 		btnAnterior.setIcon(new ImageIcon(PnlDatosEstudiante.class.getResource("/gui/res/previous.png")));
 		toolBar.add(btnAnterior);
 		
-		JButton btnSiguiente = new JButton("");
+		btnSiguiente = new JButton("");
 		btnSiguiente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actual = EstudianteControlador.getInstancia().findNext(actual);
@@ -59,7 +64,7 @@ public class PnlDatosEstudiante extends JPanel {
 		btnSiguiente.setIcon(new ImageIcon(PnlDatosEstudiante.class.getResource("/gui/res/next.png")));
 		toolBar.add(btnSiguiente);
 		
-		JButton btnUltimo = new JButton("");
+		btnUltimo = new JButton("");
 		btnUltimo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				actual = EstudianteControlador.getInstancia().findLast();
@@ -117,7 +122,9 @@ public class PnlDatosEstudiante extends JPanel {
 			this.pnlDatos.setTelefono(this.actual.getTelefono());
 			this.pnlDatos.setTipologiaSexo(this.actual.getTipologiasexo());
 			this.pnlDatos.setImagen(this.actual.getImagen());
+			this.pnlDatos.setColorPreferido(this.actual.getColorPreferido());
 		}
+		compruebaAnteriorSiguiente();
 	}
 
 
@@ -135,6 +142,7 @@ public class PnlDatosEstudiante extends JPanel {
 		this.actual.setTelefono(this.pnlDatos.getTelefono());
 		this.actual.setTipologiasexo(this.pnlDatos.getTipologiaSexo());
 		this.actual.setImagen(this.pnlDatos.getImagen());
+		this.actual.setColorPreferido(this.pnlDatos.getColorPreferido());
 	}
 	
 	
@@ -179,5 +187,29 @@ public class PnlDatosEstudiante extends JPanel {
 	    		cargarActualEnPantalla();
 	    	}
 	    }
+	}
+	
+	
+	/**
+	 * 
+	 */
+	private void compruebaAnteriorSiguiente () {
+		boolean hayAnterior = true, haySiguiente = true;
+		// Compruebo si el actual es null
+		if (this.actual == null) {
+			hayAnterior = false;
+			haySiguiente = false;
+		}
+		if (EstudianteControlador.getInstancia().findPrevious(actual) == null) {
+			hayAnterior = false;
+		}
+		if (EstudianteControlador.getInstancia().findNext(actual) == null) {
+			haySiguiente = false;
+		}
+		
+		this.btnPrimero.setEnabled(hayAnterior);
+		this.btnAnterior.setEnabled(hayAnterior);
+		this.btnSiguiente.setEnabled(haySiguiente);
+		this.btnUltimo.setEnabled(haySiguiente);
 	}
 }

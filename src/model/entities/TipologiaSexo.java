@@ -93,7 +93,7 @@ public class TipologiaSexo implements Serializable {
 
 	@Override
 	public String toString() {
-		return this.descripcion;
+		return descripcion;
 	}
 
 	
