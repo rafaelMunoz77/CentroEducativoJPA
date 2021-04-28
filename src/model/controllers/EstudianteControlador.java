@@ -1,5 +1,8 @@
 package model.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
@@ -7,6 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import model.entities.Estudiante;
+import model.entities.TipologiaSexo;
 
 
 public class EstudianteControlador {
@@ -155,5 +159,24 @@ public class EstudianteControlador {
 		return true;
 	}
 
+
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public List<Estudiante> findAll () {
+		List<Estudiante> resultado = new ArrayList<Estudiante>();
+		try {
+			EntityManager em = this.factory.createEntityManager();
+			Query q = em.createQuery("SELECT o FROM Estudiante o", Estudiante.class);
+			resultado = (List<Estudiante>) q.getResultList();
+			em.close();
+			return resultado;
+		}
+		catch (NoResultException nrEx) {
+			return null;
+		}
+	}
 
 }
