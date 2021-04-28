@@ -59,7 +59,7 @@ public class PnlDatosPersonales extends JPanel {
 		setLayout(gridBagLayout);
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
@@ -77,7 +77,7 @@ public class PnlDatosPersonales extends JPanel {
 		jtfNombre.setColumns(10);
 		
 		JLabel lblApellidos = new JLabel("Apellido 1:");
-		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
 		gbc_lblApellidos.anchor = GridBagConstraints.EAST;
 		gbc_lblApellidos.insets = new Insets(0, 0, 5, 5);
@@ -95,7 +95,7 @@ public class PnlDatosPersonales extends JPanel {
 		add(jtfApellido1, gbc_jtfApellido1);
 		
 		JLabel lblNewLabel_1 = new JLabel("Apellido 2:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -113,7 +113,7 @@ public class PnlDatosPersonales extends JPanel {
 		jtfApellido2.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("DNI:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
@@ -131,7 +131,7 @@ public class PnlDatosPersonales extends JPanel {
 		jtfDNI.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Sexo:");
-		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_6.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
 		gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
@@ -148,7 +148,7 @@ public class PnlDatosPersonales extends JPanel {
 		add(jcbSexo, gbc_jcbSexo);
 		
 		JLabel lblNewLabel_3 = new JLabel("Dirección:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
@@ -166,7 +166,7 @@ public class PnlDatosPersonales extends JPanel {
 		jtfDireccion.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Email:");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
 		gbc_lblNewLabel_4.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
@@ -196,7 +196,7 @@ public class PnlDatosPersonales extends JPanel {
 		add(btnCambiaImagen, gbc_btnCambiaImagen);
 		
 		JLabel lblNewLabel_5 = new JLabel("Teléfono:");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_5.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
@@ -223,7 +223,7 @@ public class PnlDatosPersonales extends JPanel {
 		add(scrollPane, gbc_scrollPane);
 		
 		lblNewLabel_7 = new JLabel("Color preferido:");
-		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
 		gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
