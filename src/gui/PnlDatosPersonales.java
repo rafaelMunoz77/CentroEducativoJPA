@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
+import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
@@ -19,6 +20,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
@@ -37,6 +40,12 @@ public class PnlDatosPersonales extends JPanel {
 	JScrollPane scrollPane;
 	private byte[] imagen = null;
 	JFileChooser jfileChooser = new JFileChooser();
+	private JLabel lblNewLabel_7;
+	private JTextField jtfColorPreferido;
+	private JButton btnColor;
+	JColorChooser jColorChooser;
+	String colorPreferido;
+	
 
 	/**
 	 * Create the panel.
@@ -44,9 +53,9 @@ public class PnlDatosPersonales extends JPanel {
 	public PnlDatosPersonales() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 1.0, 0.5, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel lblNewLabel = new JLabel("Nombre:");
@@ -212,6 +221,36 @@ public class PnlDatosPersonales extends JPanel {
 		gbc_scrollPane.gridx = 2;
 		gbc_scrollPane.gridy = 0;
 		add(scrollPane, gbc_scrollPane);
+		
+		lblNewLabel_7 = new JLabel("Color preferido:");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		GridBagConstraints gbc_lblNewLabel_7 = new GridBagConstraints();
+		gbc_lblNewLabel_7.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_7.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_7.gridx = 0;
+		gbc_lblNewLabel_7.gridy = 8;
+		add(lblNewLabel_7, gbc_lblNewLabel_7);
+		
+		jtfColorPreferido = new JTextField();
+		GridBagConstraints gbc_jtfColorPreferido = new GridBagConstraints();
+		gbc_jtfColorPreferido.insets = new Insets(0, 0, 5, 5);
+		gbc_jtfColorPreferido.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jtfColorPreferido.gridx = 1;
+		gbc_jtfColorPreferido.gridy = 8;
+		add(jtfColorPreferido, gbc_jtfColorPreferido);
+		jtfColorPreferido.setColumns(10);
+		
+		btnColor = new JButton("Cambiar color");
+		btnColor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				seleccionaColor();
+			}
+		});
+		GridBagConstraints gbc_btnColor = new GridBagConstraints();
+		gbc_btnColor.insets = new Insets(0, 0, 5, 0);
+		gbc_btnColor.gridx = 2;
+		gbc_btnColor.gridy = 8;
+		add(btnColor, gbc_btnColor);
 
 		// Cargamos datos de Tipologías de sexo: Hombre, Mujer, otro
 		List<TipologiaSexo> tiposSexo = TipologiaSexoControlador.getInstancia().findAll();
@@ -412,4 +451,44 @@ public class PnlDatosPersonales extends JPanel {
 		return new byte[] {};
 	}
 	
+	
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String getColorPreferido () {
+		return this.colorPreferido;
+	}
+	
+	/**
+	 * 
+	 * @param color
+	 */
+	public void setColorPreferido (String color) {
+		if (color != null) {
+			this.colorPreferido = color;
+			this.setBackground(Color.decode(this.colorPreferido));
+		}
+		else {
+			this.colorPreferido = null;
+			this.setBackground(Color.LIGHT_GRAY);
+		}
+	}
+	
+	
+	/**
+	 * 
+	 */
+	private void seleccionaColor () {
+		Color colorInicial = (this.colorPreferido != null)? Color.decode(this.colorPreferido) : Color.LIGHT_GRAY;
+		Color color = jColorChooser.showDialog(null, "Seleccione un Color", colorInicial);
+		// Si el usuario pulsa sobre aceptar, el color elegido no será nulo
+		if (color != null) {
+			String strColor = "#"+Integer.toHexString(color.getRGB()).substring(2);
+			setColorPreferido(strColor);
+			this.jtfColorPreferido.setText(strColor);
+		}
+	}
+
 }
