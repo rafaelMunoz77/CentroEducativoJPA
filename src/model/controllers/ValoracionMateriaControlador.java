@@ -65,6 +65,29 @@ public class ValoracionMateriaControlador {
 	
 	/**
 	 * 
+	 * @return
+	 */
+	public ValoracionMateria findByMateriaAndProfesorAndEstudianteAndValoracion (Materia m, Profesor p, Estudiante e, float v) {
+		ValoracionMateria resultado = null;
+		try {
+			EntityManager em = this.factory.createEntityManager();
+			Query q = em.createNativeQuery("SELECT * FROM valoracionmateria where idMateria = ? and "
+					+ "idProfesor = ? and idEstudiante = ? and valoracion = ?", ValoracionMateria.class);
+			q.setParameter(1, m.getId());
+			q.setParameter(2, p.getId());
+			q.setParameter(3, e.getId());
+			q.setParameter(4, v);
+			resultado = (ValoracionMateria) q.getSingleResult();
+			em.close();
+		}
+		catch (NoResultException nrEx) {
+		}
+		return resultado;
+	}
+	
+	
+	/**
+	 * 
 	 * @param e
 	 */
 	public boolean save(ValoracionMateria e) {
